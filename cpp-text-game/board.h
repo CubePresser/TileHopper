@@ -8,10 +8,14 @@ class Board {
         int size;
         int** state;
     public:
-        Board(int);
-        int getSize();
+        Board(int size);
 
-        std::vector<int*> getMoves(int, int);
+        int getSize();
+        int** getState();
+        std::vector<int*> getMoves(int* pos);
+
+        void setTile(int val, int* move);
+        
         void display();
 };
 

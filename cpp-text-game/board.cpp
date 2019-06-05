@@ -14,26 +14,13 @@ int Board::getSize() {
     return size;
 }
 
-void Board::display() {
-    // Print column indices
-    std::cout << '\t';
-    for(int i = 0; i < size; i++) {
-        std::cout << i << '\t';
-    }
-    std::cout << std::endl;
-
-    // Print values
-    for(int i = 0; i < size; i++) {
-        // Print row indices
-        std::cout << i << '\t';
-        for(int k = 0; k < size; k++) {
-            std::cout << state[i][k] << '\t';
-        }
-        std::cout << std::endl;
-    }
+int** Board::getState() {
+    return state;
 }
 
-std::vector<int*> Board::getMoves(int x, int y) {
+std::vector<int*> Board::getMoves(int* pos) {
+    int x = pos[0];
+    int y = pos[1];
     int steps[8][2] = {
         {-3,  0},
         {-2, -2},
@@ -59,4 +46,27 @@ std::vector<int*> Board::getMoves(int x, int y) {
     }
 
     return moves;
+}
+
+void Board::setTile(int next, int* move) {
+    state[move[1]][move[0]] = next;
+}
+
+void Board::display() {
+    // Print column indices
+    std::cout << '\t';
+    for(int i = 0; i < size; i++) {
+        std::cout << i << '\t';
+    }
+    std::cout << std::endl;
+
+    // Print values
+    for(int i = 0; i < size; i++) {
+        // Print row indices
+        std::cout << i << '\t';
+        for(int k = 0; k < size; k++) {
+            std::cout << state[i][k] << '\t';
+        }
+        std::cout << std::endl;
+    }
 }

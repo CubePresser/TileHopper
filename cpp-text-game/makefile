@@ -1,6 +1,7 @@
 LINK_TARGET = tilehopper.exe
 
 OBJS = \
+	game.o \
 	board.o \
 	main.o
 
@@ -19,4 +20,5 @@ $(LINK_TARGET) : $(OBJS)
 %.o : %.cpp
 	g++ -o $@ -c $<
 
-main.o : board.h
+main.o : board.h game.h
+game.o : board.h
